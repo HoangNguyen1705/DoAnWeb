@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DoAnWeb.Models.ThucAn>
+@{
+    ViewBag.Title = "ListFood";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .button {
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #4CAF50;
+    }
+
+        .button1:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .button2 {
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+    }
+
+        .button2:hover {
+            background-color: #008CBA;
+            color: white;
+        }
+</style>
+
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
+<h2>Quản lý Thông tin</h2>
+
+<a href="@Url.Action("Create","Food")" class="button button1">Create New Food</a>
+<a href="@Url.Action("ListKH","Home")" class="button button2">Danh Sách Khách Hàng</a>
+
+<table id="customers">
+    <tr>
+        <th>Mã loại</th>
+        <th> Mã món ăn </th>
+        <th> Tên món ăn </th>
+        <th> Hình </th>
+        <th> Giá bán</th>
+        <th> Ngày cập nhật </th>
+        <th> Số lượng tồn</th>
+        <th>Chức năng</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.maloai)</td>
+            <td>@Html.DisplayFor(modelItem => item.madoan)</td>
+            <td>@Html.DisplayFor(modelItem => item.tendoan)</td>
+            <td><img src="@item.hinh" alt="hinh thumbnail" width="200" /></td>
+            <td>@Html.DisplayFor(modelItem => item.giaban)</td>
+            <td>@Html.DisplayFor(modelItem => item.ngaycapnhat)</td>
+            <td>@Html.DisplayFor(modelItem => item.soluongton)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.madoan }) |
+                @Html.ActionLink("Detail", "Detail", new { id = item.madoan }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.madoan })
+            </td>
+        </tr>
+    }
+</table>
+
+

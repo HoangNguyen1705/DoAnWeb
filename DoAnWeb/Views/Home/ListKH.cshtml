@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DoAnWeb.Models.KhachHang>
+@{
+    ViewBag.Title = "ListFood";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
+
+<h2>LIST CUSTOMER</h2>
+<table id="customers">
+
+    <tr>
+        <th>Mã Khách Hàng</th>
+        <th>Họ Tên Khách Hàng</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        
+    </tr>
+
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.makh)</td>
+                    <td>@Html.DisplayFor(modelItem => item.hoten)</td>
+                    <td>@Html.DisplayFor(modelItem => item.email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.diachi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.dienthoai)</td>
+                </tr>
+            }
+</table>
